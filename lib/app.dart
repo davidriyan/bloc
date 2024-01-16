@@ -8,14 +8,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ThemeBloc, bool>(
+    return BlocBuilder(
       bloc: context.read<ThemeBloc>(),
       builder: (context, state) {
         return MaterialApp(
+          theme: state == true ? ThemeData.light() : ThemeData.dark(),
           debugShowCheckedModeBanner: false,
-          theme: state
-              ? ThemeData.light(useMaterial3: false)
-              : ThemeData.dark(useMaterial3: false),
           home: const HomePage(),
         );
       },
